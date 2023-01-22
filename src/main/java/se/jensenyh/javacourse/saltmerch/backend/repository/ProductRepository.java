@@ -15,8 +15,11 @@ import se.jensenyh.javacourse.saltmerch.backend.model.ColorVariant;
 import se.jensenyh.javacourse.saltmerch.backend.model.Product;
 import se.jensenyh.javacourse.saltmerch.backend.model.SizeContainer;
 
+@Repository
 public class ProductRepository
 {
+    @Autowired
+    JdbcTemplate jdbcTemplate;
     // NOTE: LEAVE THIS RECORD AS IT IS!
     private record VariantWImages(int id, String colorName, String imagesCsv) {}
     
@@ -31,25 +34,33 @@ public class ProductRepository
     
     // todo: this method needs you to write its SQL query
     /** Reads all rows from the products table and returns them as a List of Products. */
+
+
+
     public List<Product> selectAll(String category)
     {
         // todo: write an SQL query that only selects all rows from the products table
-        String sql = "";// <<<< todo: WRITE SQL QUERY HERE
+        String sql = "SELECT * FROM products";// <<<< todo: WRITE SQL QUERY HERE
         
         
         
         // NOTE: leave this line as it is!
         if (category != null) sql += " WHERE category = (:category)";
         
-        
+
         
         // todo: create a RowMapper for the Product class,
         //  using the constructor that takes id, category, title, description, and previewImage
         // NOTE: have in mind that the column name that corresponds to previewImage is preview_image
-        RowMapper<Product> rm = null;// <<<< todo: CREATE RowMapper HERE
-        
-        
-        
+        RowMapper<Product> rm = (rs, rowNum) -> new Product(// <<<< todo: CREATE RowMapper HERE
+
+                rs.getInt("id"),
+                rs.getString("category"),
+                rs.getString("title"),
+                rs.getString("description"),
+                rs.getString("preview_image"));
+
+
         // NOTE: leave the rest as it is!
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("category", category);

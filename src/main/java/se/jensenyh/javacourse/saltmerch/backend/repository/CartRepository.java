@@ -13,13 +13,19 @@ import java.util.Map;
 
 import se.jensenyh.javacourse.saltmerch.backend.model.CartItem;
 
+@Repository
 public class CartRepository
 {
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
     // todo: this method needs you to write its SQL query
     public List<CartItem> selectAllItems()
+
     {
         // todo: write the SQL query for getting all columns and rows from the cart_items table
-        var sql = "";// <<<< todo: WRITE SQL QUERY HERE
+        var sql = "SELECT * FROM cart_items";// <<<< todo: WRITE SQL QUERY HERE
 
 
         // NOTE: you can leave everything else here as it is
