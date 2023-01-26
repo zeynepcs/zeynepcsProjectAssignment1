@@ -26,4 +26,10 @@ CartRepository db;
     {
         return db.deleteOrDecrementItem(item);
     }
+
+    public void getCart() {
+    }
+
+    public void emptyCart(boolean buyout) {
+    }
 }
