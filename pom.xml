@@ -11,6 +11,7 @@
 	<groupId>se.jensenyh.javacourse</groupId>
 	<artifactId>saltmerch-backend</artifactId>
 	<version>1.0.0</version>
+	<packaging>war</packaging>
 	<name>saltmerch-backend</name>
 	<description>Backend for the Salt Merch site, which is Project Assignment 1 for the Jensen Java course.</description>
 	<properties>
@@ -20,6 +21,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -49,9 +56,12 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.0.0</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.1</version>
+				<configuration>
+					<finalName>ROOT</finalName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
