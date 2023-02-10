@@ -50,11 +50,11 @@ public class CartController
 
     @DeleteMapping("carts/{id}")
     public void  clearCard(@PathVariable("id") int id, @RequestParam(defaultValue ="") String buyout){
-        if (buyout=="true"){
+        if (buyout.equals("true")){
             cartservice.emptyCartCheckOut(false);
         }
 
-        else if ( buyout=="") {
+        else if ( buyout.equals("")) {
             cartservice.emptyCart(true);
 
         }
