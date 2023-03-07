@@ -10,4 +10,7 @@ Spring:
 server:
   port: 8099
   servlet:
-   contextPath: /api/v1/
+    contextPath: /api/v1/
+
+
+

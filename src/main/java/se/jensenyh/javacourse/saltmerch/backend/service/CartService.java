@@ -26,4 +26,14 @@ CartRepository db;
     {
         return db.deleteOrDecrementItem(item);
     }
+
+    public void emptyCartCheckOut(boolean restock) { db.deleteAllItems(false);
+    }
+
+    public void emptyCart(boolean restock) { db.deleteAllItems(true);
+    }
+
+    public void getCart() {
+
+    }
 }
